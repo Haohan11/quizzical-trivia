@@ -1,0 +1,211 @@
+:root {
+    --blob-size: 300px;
+    --dark-blue: hsla(231, 42%, 28%, 1);
+    --blue: hsla(230, 34%, 46%, 1);
+    --light-blue: hsla(230, 61%, 90%, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: hsla(220, 43%, 97%, 1);
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: var(--blob-size);
+    height: var(--blob-size);
+    background: hsla(54, 100%, 91%, 1);
+    border-radius: 50% 50% 40% 60% / 40% 50% 50% 60% ;
+    box-shadow: 15px 15px hsla(54, 100%, 91%, 1);
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: var(--blob-size);
+    height: var(--blob-size);
+    background: hsla(210, 65%, 92%, 1);
+    border-radius: 70% 30% 50% 50% / 24% 50% 50% 76% ;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+    min-width: 500px;
+    overflow: auto;
+}
+
+.intropage {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+    
+    padding: 50px;
+    z-index: 99;
+}
+
+.intropage--title {
+    font-family: 'Karla', sans-serif;
+    font-size: 31.25px;
+    color: var(--dark-blue);
+    text-align: center;
+    margin: 0;
+}
+
+.intropage--subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--dark-blue);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.start-quiz-button {
+    width: 193px;
+    height: 52px;
+    background: var(--blue);
+    border: none;
+    border-radius: 15px;
+    color: hsla(220, 43%, 97%, 1);
+    margin-top: 29px;
+    
+    font-family: 'Inter';
+}
+
+.start-quiz-button:focus, .question button:focus,
+.submit-button:focus {
+    outline: none;
+}
+
+button:not(.selected) {
+    cursor: pointer;
+}
+
+.quizpage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 75px;
+    z-index: 99;
+}
+
+.question {
+    border-bottom: 0.79px solid hsla(231, 42%, 90%, 1);
+    margin-bottom: 15px;
+}
+
+.question--text {
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    color: var(--dark-blue);
+    margin: 0 0 12px 0;
+}
+
+.question button {
+    height: 21px;
+    min-width: 65px;
+    line-height: 12px;
+    
+    font-family: 'Inter';
+    font-size: 10.24px;
+    
+    border: 0.8px solid var(--blue);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--dark-blue);
+    margin: 0 12.5px 15px 0;
+    padding: 0 8px;
+}
+
+.submit-field {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.submit-button {
+    width: 120px;
+    height: 35px;
+    background: var(--blue);
+    border: none;
+    border-radius: 10px;
+    color: hsla(220, 43%, 97%, 1);
+    
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 10px;
+}
+
+.submit-message {
+    font-family: 'Inter';
+    font-size: 12.8px;
+    color: var(--dark-blue);
+    margin-right: 20px;
+    line-height: 10px;
+}
+
+.question button:active{
+    transform: none;
+}
+
+.question .selected {
+    border: 0.8px solid transparent;
+    background-color: var(--light-blue);
+}
+
+.question .green {
+    border: 0.8px solid transparent;
+    background-color: hsla(133, 46%, 71%, 1);
+}
+
+.question .red {
+    border: 0.8px solid transparent;
+    background-color: hsla(360, 81%, 85%, 0.5);
+    color: hsla(231, 42%, 28%, 0.5);
+}
+
+.question .lightblue {
+    border: 0.8px solid hsla(230, 34%, 46%, 0.5);
+    color: hsla(231, 42%, 28%, 0.5);    
+}
+
+.skeleton--text {
+    width: 100%;
+    height: 16px;
+    border-radius: 3px;
+    background-color: var(--light-blue);
+}
+
+.skeleton--text:last-of-type {
+    width: 80%;
+}
+
+.skeleton {
+    animation: skeleton-loading linear 1s infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        opacity: 0.5;
+    }
+    
+    100% {
+        opacity: 0.9;
+    }
+}
